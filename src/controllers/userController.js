@@ -1,17 +1,33 @@
+import User from "../model/user"
+
 export const getJoin =(req,res)=>{
     res.render("user/join")
 }
 
-export const postJoin=(req,res)=>{
+export const postJoin= async (req,res)=>{
     const {
         name,id,password,password2,location
     }=req.body
+    const user = await User.exists({id}) 
+    if(user){
+        //flash 메세지 
+        console.log("exites User")
+        return res.render("user/join")
+    }
     if(password !== password2){
         // 나중에 express-flash 사용해서 에러 전달 
         console.log("error")
         return res.render("user/join")
     }
-    return res.redirect('/')
+    await User.create({
+        name,
+        id,
+        password,
+        location
+    })
+
+
+    return res.render("user/login")
 } 
 
 export const getLogin =(req,res)=>{
