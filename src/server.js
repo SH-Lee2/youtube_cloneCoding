@@ -5,6 +5,8 @@ import userRouter from "./routers/userRouter"
 import videoRouter from "./routers/videoRouter"
 import session from "express-session"
 import { watchSession } from "./middleWare"
+import "./db"
+import "./model/user"
 const app = express()
 
 const PORT = 4000
