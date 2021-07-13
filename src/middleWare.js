@@ -1,4 +1,6 @@
 export const watchSession=(req,res,next)=>{
-    console.log(req.session)
+    res.locals.user = req.session.user || {}
+    res.locals.isLogIn = req.session.isLogIn
+    console.log(req.session.user)
     next()
 }

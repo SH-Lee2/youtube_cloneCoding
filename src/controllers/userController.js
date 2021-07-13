@@ -43,7 +43,6 @@ export const postLogin = async(req,res)=>{
         console.log("can not find User")
         return res.render("user/login")
     }
-    console.log(typeof password, typeof user.password)
     const match = await bcrypt.compare(password,user.password)
     if(!match){
         //flash
@@ -54,4 +53,12 @@ export const postLogin = async(req,res)=>{
     req.session.isLogIn = true
     req.session.user = user
     return res.redirect('/')
+}
+
+
+
+export const logOut = (req,res)=>{
+    req.session.isLogIn = false
+    req.session.user = {}
+    return res.redirect("/")
 }

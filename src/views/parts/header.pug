@@ -1,11 +1,15 @@
 header
     nav     
-        ul 
+        ul
             li 
                 a(href="/") Home 
-            li 
-                a(href="/join") Join
-            li 
-                a(href="/upload") Upload
-            li 
-                a(href="/login") Login
+            if isLogIn
+                li 
+                    a(href="/upload") Upload    
+                li 
+                    a(href="/logout") Logout
+            else    
+                li 
+                    a(href="/join") Join
+                li 
+                    a(href="/login") Login
