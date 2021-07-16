@@ -1,6 +1,7 @@
 import User from "../model/user"
 import bcrypt from "bcrypt"
 import fetch from "node-fetch"
+import "dotenv/config"
 export const getJoin =(req,res)=>{
     res.render("user/join")
 }
@@ -52,7 +53,7 @@ export const postLogin = async(req,res)=>{
         return res.render("user/login")
     }
     //유저가 있으면 세션에 저장 
-    req.session.isLogIn = true
+    req.session.loggedIn = true
     req.session.user = user
     return res.redirect('/')
 }
@@ -60,21 +61,20 @@ export const postLogin = async(req,res)=>{
 export const startGitHub = (req,res)=>{
     const baseUrl = "https://github.com/login/oauth/authorize"
     const config = {
-        client_id : "3aafa305d8174a398847",
+        client_id : process.env.CLIENT_ID,
         allow_signup : false,
         scope : "user:email  read:user"
     }
     const configUrl = new URLSearchParams(config).toString()
     const finalUrl = `${baseUrl}?${configUrl}`
-    console.log(finalUrl)
     return res.redirect(finalUrl)
 }
 
 export const finishGitHub = async(req,res)=>{
     const baseUrl = "https://github.com/login/oauth/access_token"
     const config = {
-        client_id : "3aafa305d8174a398847",
-        client_secret : "bf493fd15fb6fa2d3599761276ea3b84f62b6061",
+        client_id : process.env.CLIENT_ID,
+        client_secret : process.env.CLIENT_SECRET,
         code : req.query.code
     }
     const configUrl = new URLSearchParams(config).toString()
@@ -119,6 +119,7 @@ export const finishGitHub = async(req,res)=>{
                 location: userData.location ? userData.location :"Unknown",
                 socialLogin : true
             })
+        }
         req.session.user = user;
         req.session.loggedIn = true
         return res.redirect("/");
@@ -126,11 +127,34 @@ export const finishGitHub = async(req,res)=>{
             return res.redirect("/login")
         }
     }
-}
+
 
 
 export const logOut = (req,res)=>{
-    req.session.isLogIn = false
+    req.session.loggedIn = false
     req.session.user = {}
     return res.redirect("/")
 }
+
+export const getChangePassword = (req,res) => {
+    return res.render("user/changePassword")
+}
+export const postChangePassword = async (req,res) => {
+    const {
+        body : {old,new1,new2}
+    }=req
+    const {
+        session : {user:{_id,password}}
+    }=req
+    const user = await User.findById(_id)
+    const match = await bcrypt.compare(old,password)
+    if(!match){
+        //flash
+        console.log("not match")
+        return res.render("user/changePassword")
+    }
+    user.password = new1
+    user.save()
+    return res.redirect("/")
+}
+

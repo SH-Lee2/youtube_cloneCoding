@@ -3,11 +3,13 @@ header
         ul
             li 
                 a(href="/") Home 
-            if isLogIn
+            if loggedIn
                 li 
                     a(href="/upload") Upload    
                 li 
                     a(href="/logout") Logout
+                li 
+                    a(href="/user/change-password") changePassword 
             else    
                 li 
                     a(href="/join") Join

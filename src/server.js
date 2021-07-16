@@ -7,6 +7,8 @@ import session from "express-session"
 import { watchSession } from "./middleWare"
 import "./db"
 import "./model/user"
+import MongoStore from "connect-mongo"
+import "dotenv/config"
 const app = express()
 
 const PORT = 4000
@@ -20,8 +22,11 @@ app.use(morgan('dev'))
 
 app.use(session({
     secret : "asdasdasdasdasdasdad",
-    resave : true,
-    saveUninitialized:true
+    resave : false,
+    saveUninitialized:false,
+    store : MongoStore.create({
+        mongoUrl : process.env.DB_URL
+    })
 }))
 
 
