@@ -10,6 +10,8 @@ header
                     a(href="/logout") Logout
                 li 
                     a(href="/user/change-password") changePassword 
+                li 
+                    a(href=`/user/${loggedIn._id}`) My Profile 
             else    
                 li 
                     a(href="/join") Join

@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(morgan('dev'))
 
 app.use(session({
-    secret : "asdasdasdasdasdasdad",
+    secret : process.env.SESSION_SECRET,
     resave : false,
     saveUninitialized:false,
     store : MongoStore.create({
