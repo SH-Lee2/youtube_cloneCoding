@@ -8,7 +8,7 @@ const userSchema = new Schema({
     password : {type : String },
     location : String,
     meta : {
-        Subscribers : Number
+        subscribers : {type :Number, default : 0}
     },
     socialLogin: { type: Boolean, default: false },
     email : {type : String , required : true, unique : true},

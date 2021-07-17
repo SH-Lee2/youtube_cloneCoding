@@ -158,3 +158,31 @@ export const postChangePassword = async (req,res) => {
     return res.redirect("/")
 }
 
+export const myProfile = async(req, res) =>{
+    const {params : {id}}=req
+    const users = await User.findById(id)
+    console.log(users.meta.subscribers)
+    return res.render("user/myProfile",{users})
+}
+
+export const getEditProfile = (req,res)=>{
+    return res.render("user/editProfile")
+}
+
+export const postEditProfile = async(req,res)=>{
+    const {
+        body : {name,location},
+        session : {user : {
+            _id ,avatarUrl
+        }},
+        file
+    }=req
+    const userUpdate = await User.findByIdAndUpdate(_id,{
+        name,
+        location,
+        avatarUrl : file ? file.path : avatarUrl
+    },{new : true})
+    req.session.user = userUpdate
+    
+    return res.redirect(`/user/${_id}/editProfile`)
+}

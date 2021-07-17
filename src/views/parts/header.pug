@@ -9,9 +9,9 @@ header
                 li 
                     a(href="/logout") Logout
                 li 
-                    a(href="/user/change-password") changePassword 
+                    a(href=`/user/${user._id}`) My Profile 
                 li 
-                    a(href=`/user/${loggedIn._id}`) My Profile 
+                    a(href=`/user/${user._id}/editProfile`) Edit Profile
             else    
                 li 
                     a(href="/join") Join
