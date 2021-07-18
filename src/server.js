@@ -7,6 +7,7 @@ import session from "express-session"
 import { watchSession } from "./middleWare"
 import "./db"
 import "./model/user"
+import "./model/video"
 import MongoStore from "connect-mongo"
 import "dotenv/config"
 const app = express()
@@ -33,6 +34,7 @@ const handleListen=()=>{
     console.log(`listening at http://localhost:${PORT}`)
 }
 app.use(watchSession)
+app.use('/uploads',express.static('uploads'))  // 브라우저가 볼수있게      
 app.use('/',rootRouter)
 app.use('/user',userRouter)
 app.use('/video',videoRouter)
