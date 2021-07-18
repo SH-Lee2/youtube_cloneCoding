@@ -7,6 +7,9 @@ const userSchema = new Schema({
     id : {type : String , unique : true},
     password : {type : String },
     location : String,
+    video : [{
+        type:Schema.Types.ObjectId, ref : 'Video'
+    }],
     meta : {
         subscribers : {type :Number, default : 0}
     },

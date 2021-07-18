@@ -7,3 +7,4 @@ export const watchSession=(req,res,next)=>{
 }
 
 export const avatarUpload  = multer({dest : 'uploads/avatar/'})
+export const videoUpload  = multer({dest : 'uploads/video/'})

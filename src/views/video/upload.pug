@@ -1,8 +1,10 @@
 extends ../base 
 
 block content
-    form(method="post")
+    form(method="post" enctype="multipart/form-data")
+        label(for="video") Video
+        input(type="file", name="videoFile", id="video", accept="video/*") 
         input(type="text", placeholder="Title", name="title")
         input(type="text", placeholder="Description", name="description")
-        input(type="text", placeholder="HashTags", name="hashtags")
+        input(type="text", placeholder="Hashtags, separated by comma.", name="hashtags")
         button(type="submit") upload
