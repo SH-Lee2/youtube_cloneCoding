@@ -8,7 +8,7 @@ const videoSchema = new Schema({
     title : {type : String , required :true},
     description : String,
     owner : {type:Schema.Types.ObjectId, ref : 'User'},
-    
+    hashtags : [{type:String}],
     createAt : {type : Date, default : Date.now},
     meta : {
         view : {type : Number , default : 0},
@@ -20,9 +20,7 @@ const videoSchema = new Schema({
 videoSchema.static("formatHashTags",(hash)=>{
     return hash
     .split(",")
-    .map(v=>{
-        v.startsWith("#") ? v : `#${v}`
-    })
+    .map((v)=>v.startsWith("#") ? v : `#${v}`)
 })
 
 const Video = mongoose.model("Video",videoSchema)

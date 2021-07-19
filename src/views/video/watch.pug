@@ -1,0 +1,16 @@
+extends ../base
+
+block content   
+    video(src="/"+video.video, controls)
+    h2=video.title
+    span #{video.owner.name}  #{video.meta.view}회
+    br
+    each hashtag in hashtags
+        span=hashtag 
+    br
+    span 좋아요 #{video.meta.like}   싫어요 #{video.meta.unLike}
+    br
+    span=video.createAt
+    if String(video.owner._id) === String(user._id)
+        hr
+        a(href=`${video.id}/delete-video`) Delete Video &rarr;
