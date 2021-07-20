@@ -13,4 +13,6 @@ block content
     span=video.createAt
     if String(video.owner._id) === String(user._id)
         hr
+        a(href=`${video.id}/edit-video`) Edit Video &rarr; 
+        br
         a(href=`${video.id}/delete-video`) Delete Video &rarr;

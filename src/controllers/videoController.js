@@ -48,12 +48,38 @@ export const deleteVideo = async(req,res)=>{
     const video = await Video.findById(id).populate("owner")
     console.log(video.owner._id)
     await Video.findByIdAndDelete(id)
-    
+
     if(String(_id) !== String(video.owner._id)){
         return res.redirect(`/video/${id}/watch`)
     }
     const user = await User.findById(video.owner._id)
     user.video.pull(id)
     user.save()
+    return res.redirect("/")
+}
+
+export const getEditVideo = async(req,res)=>{
+    const {params :{id}}=req
+    const video = await Video.findById(id)
+    return res.render("video/editVideo",{video})
+}
+
+export const postEditVideo = async(req,res) =>{
+    const {
+        body : {title,description,hashtags},
+        params : {id},
+        session : {user : {_id}}
+    } = req
+    const video = await Video.findById(id).populate("owner")
+    if(String(video.owner._id) !== String(_id)){
+        //flash
+        return res.redirect(`/video/${id}/edit-video`)
+    }
+    await Video.findByIdAndUpdate(id,{
+        title,
+        description,
+        hashtags : Video.formatHashTags(hashtags)
+    })
+    video.save()
     return res.redirect("/")
 }
