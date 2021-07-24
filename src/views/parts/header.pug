@@ -3,6 +3,11 @@ header
         ul
             li 
                 a(href="/") Home 
+            li
+                input(type="text", name="search" , placeholder="검색")
+            li    
+                button
+                    i.fas.fa-search
             if loggedIn
                 li 
                     a(href="/video/upload") Upload    

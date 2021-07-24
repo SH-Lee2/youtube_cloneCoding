@@ -35,6 +35,7 @@ const handleListen=()=>{
 }
 app.use(watchSession)
 app.use('/uploads',express.static('uploads'))  // 브라우저가 볼수있게      
+app.use('/static',express.static('assets'))
 app.use('/',rootRouter)
 app.use('/user',userRouter)
 app.use('/video',videoRouter)

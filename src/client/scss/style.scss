@@ -1,0 +1,12 @@
+// Config
+@import "./config/_variables";
+@import "./config/reset";
+
+//Componets
+@import "./components/header.scss";
+
+//screens
+
+body {
+  background-color: $red;
+}
