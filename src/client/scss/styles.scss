@@ -1,0 +1,19 @@
+// Config
+@import "./config/variables";
+@import "./config/reset";
+
+//Componets
+@import "./components/header.scss";
+@import "./components/side.scss";
+@import "./components/share.scss";
+
+//screens
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+.container {
+  background-color: skyblue;
+}

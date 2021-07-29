@@ -1,8 +1,8 @@
 mixin video(video)
-    a(href=`/video/${video._id}`) 
-        video(src=video.video,controls) 
-    h2=video.title
-    span #{video.owner.name}  #{video.meta.view}회
-    br
-    span=video.createAt
-    hr
+    .video
+        a(href=`/video/${video._id}`) 
+            video(src=video.video,controls) 
+        h2=video.title
+        span #{video.owner.name}  #{video.meta.view}회
+        br
+        span=video.createAt
