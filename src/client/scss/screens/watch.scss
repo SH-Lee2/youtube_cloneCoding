@@ -1,0 +1,69 @@
+.content {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 3fr 1fr;
+  padding: 1.5% 5%;
+  .main-video {
+    padding: 0 2%;
+    video {
+      width: 100%;
+      object-fit: cover;
+      max-height: 700px;
+    }
+    .video-meta-header {
+      padding: 15px 0;
+      #hastags {
+        margin-bottom: 5px;
+        color: #065fd4;
+        font-size: 0.9rem; // ?
+        .hashtag {
+          margin-right: 5px;
+        }
+      }
+
+      #title {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  .video-list {
+    display: block;
+    width: 100%;
+    .watch {
+      max-height: 100px;
+      display: grid;
+      grid-template-columns: 40% 60%;
+      grid-template-rows: repeat(auto-fit, 100px);
+      margin-bottom: 8px;
+      .profileImg {
+        display: none;
+      }
+      .watchInfo {
+        width: 100%;
+        .meta {
+          height: 100%;
+          padding: 10px;
+          .meta-watch {
+            a {
+              margin-bottom: 5px;
+            }
+            position: relative;
+            top: 50%;
+            display: flex;
+            flex-direction: column;
+            font-size: 12px;
+          }
+        }
+      }
+      .videoSize {
+        height: 100px;
+        video {
+          height: 100px;
+          object-fit: cover;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -35,9 +35,12 @@ export const watch = async(req,res)=>{
         id
     }}=req
     const video = await Video.findById(id).populate('owner')
+    const videos = await Video.find({}).populate('owner')
+    const index = videos.findIndex(i=>String(i._id) === id)
+    videos.splice(index,1)
     const user = await User.findById(video.owner).populate('video')
-    const hashtags = video.hashtags
-    return res.render("video/watch",{video,hashtags})
+    const hashtags = video.hashtags 
+    return res.render("video/watch",{video,hashtags,videos})
 }
 
 export const deleteVideo = async(req,res)=>{
@@ -83,3 +86,22 @@ export const postEditVideo = async(req,res) =>{
     video.save()
     return res.redirect("/")
 }
+
+export const getSearch = async(req,res) => {
+    const {
+        query : {search}
+    }=req
+    let videos = []
+    if(search){
+        videos = await Video.find({
+          title: {
+            $regex: new RegExp(`${search}$`, "i"),
+          },
+        }).populate("owner");
+      }
+    else{
+        return res.render("home")
+    }
+    return res.render("result", { videos });
+}
+

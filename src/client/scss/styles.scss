@@ -1,19 +1,25 @@
 // Config
 @import "./config/variables";
 @import "./config/reset";
+@import "./components/menu.scss";
 
 //Componets
 @import "./components/header.scss";
 @import "./components/side.scss";
 @import "./components/share.scss";
+@import "./components/footer.scss";
+@import "./components/form.scss";
+@import "./components/socialLogin.scss";
+@import "./components/profileImage.scss";
 
 //screens
+@import "./screens/home.scss";
+@import "./screens/myprofile.scss";
+@import "./screens/watch.scss";
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
-}
-.container {
-  background-color: skyblue;
+  height: calc(100vh - 65px);
 }

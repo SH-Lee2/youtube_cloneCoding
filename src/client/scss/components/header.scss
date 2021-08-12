@@ -1,53 +1,37 @@
 header {
-  height: 50px;
-  padding: 10px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  nav {
-    ul {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      .home-icon {
-        color: $red;
-        font-size: 25px;
-      }
-      .search {
-        form {
-          display: flex;
-          align-items: center;
-          input {
-            width: 530px;
-            height: 28px;
-            font-size: 15px;
-            padding: 2px 6px;
-            border-width: 1px 0 1px 1px;
-            border-style: solid;
-            border-color: gray;
-            &:focus-visible {
-              outline: none;
-            }
-          }
-          button {
-            border: 1px solid gray;
-            i {
-              font-size: 20px;
-              padding: 2px 6px;
-              color: rgb(85, 84, 84);
-            }
-          }
-        }
-      }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  padding: 12px 50px;
+  .home-icon {
+    color: $red;
+    font-size: 20px;
+    font-weight: 500;
+    &::after {
+      content: "YouTube";
+      color: black;
     }
   }
-  .profileImg {
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
+  form {
+    width: 30%;
+
+    input {
+      width: 90%;
+      border: 1px solid rgb(182, 182, 182);
+      padding: 3px;
+    }
+    button {
+      width: 10%;
+      border: 1px solid rgb(182, 182, 182);
+      border-left: none;
+      padding: 3px;
+      cursor: pointer;
+    }
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

@@ -1,11 +1,12 @@
 extends ../base
 
 block content 
-    form(method="post")
-        input(type="text", placeholder="Id", name="id")
-        input(type="password",placeholder="Password" name="password")
-        button(type="submit") Login
-    
-    a(href="/github/start") 
-        i.fab.fa-github     
-            | github login  
+    .form 
+        form(method="post")
+            input(type="text", placeholder="Id", name="id")
+            input(type="password",placeholder="Password" name="password")
+            button(type="submit") Login
+        .social-login
+            a(href="/github/start") 
+                i.fab.fa-github     
+                    | github login  

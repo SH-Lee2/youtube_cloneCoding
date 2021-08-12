@@ -7,7 +7,7 @@ block content
         .bc
             if Number(videos.length) !== 0
                 .video-grid
-                        each video in videos 
-                            +video(video)
+                    each video in videos 
+                        +video(video)
             else 
-                p.not  텅
+                p.not 검색결과 없음

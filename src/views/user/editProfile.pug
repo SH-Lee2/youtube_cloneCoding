@@ -1,12 +1,13 @@
 extends ../base
 
 block content 
-    form(method="post" enctype="multipart/form-data")
-        label(for="avatar") Avatar 
-        input(type="file", name="avatar" ,id="avatar" accept="image/*")
-        input(type="text", placeholder="Name", name="name" , value=user.name)
-        input(type="text", placeholder="Location", name="location" value=user.location)
-        button(type="submit") Update Profile
-    if !user.socialLogin
-        hr
-        a(href="change-password") Change Password &rarr;
+    .form
+        form(method="post" enctype="multipart/form-data")
+            label(for="avatar") Avatar 
+            input(type="file", name="avatar" ,id="avatar" accept="image/*")
+            input(type="text", placeholder="Name", name="name" , value=user.name)
+            input(type="text", placeholder="Location", name="location" value=user.location)
+            button(type="submit") Update Profile
+        if !user.socialLogin
+            hr
+            a(href="change-password") Change Password &rarr;

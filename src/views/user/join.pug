@@ -1,11 +1,12 @@
 extends ../base
 
-block content 
-    form(method="post")
-        input(type="text", placeholder="Name", name="name" required)
-        input(type="email", placeholder="Email" name="email" required)
-        input(type="text", placeholder="Id", name="id" required)
-        input(type="password", placeholder="Password", name="password" required)
-        input(type="password", placeholder="Confirm Password" ,name="password2" required)
-        input(type="text", placeholder="Location", name="location")
-        button(type="submit") Join
+block content
+    .from
+        form(method="post")
+            input(type="text", placeholder="Name", name="name" required)
+            input(type="email", placeholder="Email" name="email" required)
+            input(type="text", placeholder="Id", name="id" required)
+            input(type="password", placeholder="Password", name="password" required)
+            input(type="password", placeholder="Confirm Password" ,name="password2" required)
+            input(type="text", placeholder="Location", name="location")
+            button(type="submit") Join
