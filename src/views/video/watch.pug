@@ -21,8 +21,18 @@ block content
                             span#up #{video.meta.like}
                             i.fas.fa-thumbs-down   
                             span#down #{video.meta.unLike}
+                hr
                 .video-second-info
-
+                    .owner-info
+                        .owner
+                            a(href=`/user/${video.owner._id}`)
+                                img(src="/"+video.owner.avatarUrl , width="200px" , height="200px").profileImg
+                            .owner-info-subscribion
+                                a(href=`/user/${user._id}`)=video.owner.name
+                                span 구독자 #{video.owner.meta.subscribers} 명
+                        button#subscribion 구독     
+                    .description
+                        span#video-description=video.description
                 if String(video.owner._id) === String(user._id)
                     hr
                     a(href=`${video.id}/edit-video`) Edit Video &rarr; 

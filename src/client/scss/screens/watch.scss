@@ -60,7 +60,37 @@
       }
     }
   }
-
+  .video-second-info {
+    padding: 20px 0;
+    .owner-info {
+      display: flex;
+      .owner {
+        display: flex;
+        align-items: center;
+        flex: 1;
+      }
+      #subscribion {
+        padding: 3px 25px;
+        font-size: smaller;
+        border: none;
+        background-color: rgb(231, 231, 231);
+        color: rgb(54, 54, 54);
+        cursor: pointer;
+      }
+      .owner-info-subscribion {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        span {
+          font-size: small;
+        }
+      }
+    }
+    .description {
+      margin: 20px 0 0 50px;
+      font-size: 15px;
+    }
+  }
   .video-list {
     display: block;
     width: 100%;
