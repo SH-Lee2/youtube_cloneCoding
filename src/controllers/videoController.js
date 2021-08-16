@@ -2,6 +2,7 @@ import Video from "../model/video"
 import User from "../model/user"
 export const  home = async(req,res)=>{
     const videos = await Video.find({}).populate('owner')
+    console.log(videos)
     res.render("home",{videos})
 }
 
@@ -105,3 +106,21 @@ export const getSearch = async(req,res) => {
     return res.render("result", { videos });
 }
 
+export const thumbs= async(req,res)=>{
+    const {params : {id},
+            body : {status : {flag , up , down}}    
+    }=req
+    const video = await Video.findById(id)
+    if(!video){
+        return res.sendStatus(404);
+    }
+    if(flag === "up"){
+        up === 1 ? video.meta.like += 1 : video.meta.like -= 1
+        if(down)video.meta.unLike -= 1
+    }else{
+        down === 1 ? video.meta.unLike += 1 : video.meta.unLike -= 1
+        if(up) video.meta.like -= 1
+    }
+    video.save()
+    return res.sendStatus(200)
+}

@@ -387,24 +387,57 @@ footer {
 .content .main-video {
   padding: 0 2%;
 }
+.content .main-video hr {
+  margin: 0;
+  padding: 0;
+}
 .content .main-video video {
   width: 100%;
   object-fit: cover;
   max-height: 700px;
 }
-.content .main-video .video-meta-header {
-  padding: 15px 0;
+.content .main-video .video-first-info {
+  padding: 10px 0;
 }
-.content .main-video .video-meta-header #hastags {
+.content .main-video .video-first-info #hastags {
   margin-bottom: 5px;
   color: #065fd4;
-  font-size: 0.9rem;
+  font-size: 12px;
 }
-.content .main-video .video-meta-header #hastags .hashtag {
+.content .main-video .video-first-info #hastags .hashtag {
   margin-right: 5px;
 }
-.content .main-video .video-meta-header #title {
-  font-size: 1.3rem;
+.content .main-video .video-first-info #title {
+  font-size: 18px;
+}
+.content .main-video .video-first-info #video-meta-info {
+  font-size: 14px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.content .main-video .video-first-info #video-meta-info .view-time {
+  font-size: 12px;
+}
+.content .main-video .video-first-info #video-meta-info .view-time #view {
+  margin-right: 5px;
+}
+.content .main-video .video-first-info #video-meta-info .thumbs {
+  color: gray;
+  width: 30%;
+  align-items: center;
+  font-size: 15px;
+}
+.content .main-video .video-first-info #video-meta-info .thumbs i {
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 20px;
+}
+.content .main-video .video-first-info #video-meta-info .thumbs .fa-thumbs-down {
+  position: relative;
+  top: 3px;
+  margin-left: 30px;
 }
 .content .video-list {
   display: block;

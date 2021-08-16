@@ -10,6 +10,7 @@ import "./model/user"
 import "./model/video"
 import MongoStore from "connect-mongo"
 import "dotenv/config"
+import apiRouter from "./routers/apiRouter"
 const app = express()
 
 const PORT = 4000
@@ -39,4 +40,5 @@ app.use('/static',express.static('assets'))
 app.use('/',rootRouter)
 app.use('/user',userRouter)
 app.use('/video',videoRouter)
+app.use("/api", apiRouter);
 app.listen(PORT,handleListen)

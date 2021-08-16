@@ -4,25 +4,59 @@
   grid-template-columns: 3fr 1fr;
   padding: 1.5% 5%;
   .main-video {
+    hr {
+      margin: 0;
+      padding: 0;
+    }
     padding: 0 2%;
     video {
       width: 100%;
       object-fit: cover;
       max-height: 700px;
     }
-    .video-meta-header {
-      padding: 15px 0;
+    .video-first-info {
+      padding: 10px 0;
       #hastags {
         margin-bottom: 5px;
         color: #065fd4;
-        font-size: 0.9rem; // ?
+        font-size: 12px; // ?
         .hashtag {
           margin-right: 5px;
         }
       }
 
       #title {
-        font-size: 1.3rem;
+        font-size: 18px;
+      }
+      #video-meta-info {
+        font-size: 14px;
+        line-height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .view-time {
+          font-size: 12px;
+          #view {
+            margin-right: 5px;
+          }
+        }
+        .thumbs {
+          color: gray;
+          width: 30%;
+          align-items: center;
+          font-size: 15px;
+
+          i {
+            cursor: pointer;
+            margin-right: 5px;
+            font-size: 20px;
+          }
+          .fa-thumbs-down {
+            position: relative;
+            top: 3px;
+            margin-left: 30px;
+          }
+        }
       }
     }
   }
