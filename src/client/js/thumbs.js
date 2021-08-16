@@ -61,3 +61,5 @@ thumbsDown.addEventListener("click",()=>{
     console.log(status)
 
 })
+
+

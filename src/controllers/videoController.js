@@ -124,3 +124,15 @@ export const thumbs= async(req,res)=>{
     video.save()
     return res.sendStatus(200)
 }
+
+export const view = async(req,res)=>{
+    const {params : {id}
+    }=req
+    const video = await Video.findById(id)
+    if(!video){
+        return res.sendStatus(404);
+    }
+    video.meta.view += 1
+    video.save()
+    return res.sendStatus(200)
+}
