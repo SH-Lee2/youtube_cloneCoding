@@ -1,5 +1,6 @@
 import Video from "../model/video"
 import User from "../model/user"
+import Comment from "../model/comment"
 export const  home = async(req,res)=>{
     const videos = await Video.find({}).populate('owner')
     console.log(videos)
@@ -39,7 +40,6 @@ export const watch = async(req,res)=>{
     const videos = await Video.find({}).populate('owner')
     const index = videos.findIndex(i=>String(i._id) === id)
     videos.splice(index,1)
-    const user = await User.findById(video.owner).populate('video')
     const hashtags = video.hashtags 
     return res.render("video/watch",{video,hashtags,videos})
 }

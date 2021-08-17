@@ -36,6 +36,14 @@ block content
                         button#subscription 구독     
                     .description
                         span#video-description=video.description
+                hr
+                .comment-header 
+                    .comment-num
+                        span 댓글 
+                    .comment-box
+                        img(src="/"+video.owner.avatarUrl , width="200px" , height="200px").profileImg
+                        .comment-input 
+                            input(type="text", name="", placeholder="공개 댓글 추가....")
                 if String(video.owner._id) === String(user._id)
                     hr
                     a(href=`${video.id}/edit-video`) Edit Video &rarr; 

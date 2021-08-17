@@ -70,12 +70,13 @@
         flex: 1;
       }
       #subscription {
-        padding: 3px 25px;
+        padding: 0 20px;
         font-size: smaller;
         border: none;
-        background-color: rgb(231, 231, 231);
-        color: rgb(54, 54, 54);
+        background-color: $red;
+        color: white;
         cursor: pointer;
+        height: 40px;
       }
       .owner-info-subscription {
         display: flex;
@@ -132,6 +133,30 @@
           object-fit: cover;
           width: 100%;
         }
+      }
+    }
+  }
+}
+
+.comment-header {
+  padding: 20px 0;
+  .comment-num {
+    padding: 0 0 20px 0;
+  }
+  .comment-box {
+    display: flex;
+    align-items: center;
+
+    .comment-input {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      input {
+        width: 95%;
+        text-align: start;
+        background-color: rgb(248, 248, 248);
+        border-width: 0 0 1px 0;
+        border-color: #ccc;
       }
     }
   }
