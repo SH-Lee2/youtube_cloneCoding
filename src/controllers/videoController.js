@@ -136,3 +136,21 @@ export const view = async(req,res)=>{
     video.save()
     return res.sendStatus(200)
 }
+
+export const subscription = async(req,res)=>{
+    const {params : {id},
+        body : {status}
+    }=req
+    const video = await Video.findById(id)
+    const user = await User.findById(video.owner)
+    if(!video){
+        return res.sendStatus(404);
+    }
+    if(!user){
+        return res.sendStatus(404);
+    }
+    console.log(status)
+    status ? user.meta.subscribers+=1 : user.meta.subscribers-= 1
+    user.save()
+    return res.sendStatus(200)
+}

@@ -450,7 +450,7 @@ footer {
   align-items: center;
   flex: 1;
 }
-.content .video-second-info .owner-info #subscribion {
+.content .video-second-info .owner-info #subscription {
   padding: 3px 25px;
   font-size: smaller;
   border: none;
@@ -458,13 +458,18 @@ footer {
   color: #363636;
   cursor: pointer;
 }
-.content .video-second-info .owner-info .owner-info-subscribion {
+.content .video-second-info .owner-info .owner-info-subscription {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
 }
-.content .video-second-info .owner-info .owner-info-subscribion span {
+.content .video-second-info .owner-info .owner-info-subscription #subscription-container {
+  display: flex;
+  margin-top: 3px;
   font-size: small;
+}
+.content .video-second-info .owner-info .owner-info-subscription #subscription-container #subscribers {
+  margin: 0 2px;
 }
 .content .video-second-info .description {
   margin: 20px 0 0 50px;
@@ -477,7 +482,7 @@ footer {
 .content .video-list .watch {
   max-height: 100px;
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 45% 55%;
   grid-template-rows: repeat(auto-fit, 100px);
   margin-bottom: 8px;
 }

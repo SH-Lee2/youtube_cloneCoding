@@ -8,7 +8,8 @@ module.exports = {
     entry: {
       main: BASE_JS + "main.js",
       thumbs: BASE_JS + "thumbs.js",
-      video : BASE_JS + "video.js"
+      video : BASE_JS + "video.js",
+      subscription : BASE_JS + "subscription.js"
     //   commentSection: BASE_JS + "commentSection.js"
     },
     

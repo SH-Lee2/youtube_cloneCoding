@@ -69,7 +69,7 @@
         align-items: center;
         flex: 1;
       }
-      #subscribion {
+      #subscription {
         padding: 3px 25px;
         font-size: smaller;
         border: none;
@@ -77,12 +77,17 @@
         color: rgb(54, 54, 54);
         cursor: pointer;
       }
-      .owner-info-subscribion {
+      .owner-info-subscription {
         display: flex;
         flex-direction: column;
         margin-left: 10px;
-        span {
+        #subscription-container {
+          display: flex;
+          margin-top: 3px;
           font-size: small;
+          #subscribers {
+            margin: 0 2px;
+          }
         }
       }
     }
@@ -97,7 +102,7 @@
     .watch {
       max-height: 100px;
       display: grid;
-      grid-template-columns: 40% 60%;
+      grid-template-columns: 45% 55%;
       grid-template-rows: repeat(auto-fit, 100px);
       margin-bottom: 8px;
       .profileImg {
