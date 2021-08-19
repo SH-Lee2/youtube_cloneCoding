@@ -13,12 +13,12 @@ const videoSchema = new Schema({
     meta : {
         view : {type : Number , default : 0},
         like : {type : Number , default : 0},
-        unLike : {type : Number , default : 0,
-        comments: [
-            { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Comment" },
-            ]
+        unLike : {type : Number , default : 0
         }
-    }
+    },
+    comments: [
+        { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Comment" },
+        ]
 })
 
 videoSchema.static("formatHashTags",(hash)=>{

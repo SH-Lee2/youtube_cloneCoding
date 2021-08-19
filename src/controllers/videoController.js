@@ -36,11 +36,13 @@ export const watch = async(req,res)=>{
     const {params : {
         id
     }}=req
-    const video = await Video.findById(id).populate('owner')
+    const video = await Video.findById(id).populate('owner').populate({path:'comments', populate : {path : 'owner'}})
     const videos = await Video.find({}).populate('owner')
+    
     const index = videos.findIndex(i=>String(i._id) === id)
     videos.splice(index,1)
     const hashtags = video.hashtags 
+    console.log(video.comments)
     return res.render("video/watch",{video,hashtags,videos})
 }
 
@@ -152,5 +154,26 @@ export const subscription = async(req,res)=>{
     console.log(status)
     status ? user.meta.subscribers+=1 : user.meta.subscribers-= 1
     user.save()
+    return res.sendStatus(200)
+}
+
+export const comments = async(req,res)=>{
+    const {
+        params : {id},
+        session: { user },
+        body : {text}
+    }=req
+    const video = await Video.findById(id)
+    if(!video){
+        return res.sendStatus(404);
+    }
+    const comment = await Comment.create({
+        text ,
+        owner : user._id,
+        video : id,
+        avatarUrl : user.avatarUrl
+    })
+    video.comments.push(comment._id)
+    video.save()
     return res.sendStatus(200)
 }

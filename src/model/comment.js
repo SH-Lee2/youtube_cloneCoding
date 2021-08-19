@@ -11,7 +11,8 @@ const commentSchema = new Schema({
         like : {type : Number , default : 0},
         unLike : {type : Number , default : 0},
 
-    }
+    },
+    avatarUrl : {type : String , required:true, ref: "User"}
 })
 
 const Comment = mongoose.model("Comment", commentSchema)

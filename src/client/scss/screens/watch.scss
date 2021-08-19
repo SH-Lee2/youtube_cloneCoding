@@ -1,163 +1,140 @@
 .content {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 3fr 1fr;
-  padding: 1.5% 5%;
-  .main-video {
-    hr {
-      margin: 0;
-      padding: 0;
-    }
-    padding: 0 2%;
-    video {
-      width: 100%;
-      object-fit: cover;
-      max-height: 700px;
-    }
-    .video-first-info {
-      padding: 10px 0;
-      #hastags {
-        margin-bottom: 5px;
-        color: #065fd4;
-        font-size: 12px; // ?
-        .hashtag {
-          margin-right: 5px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 3fr 1fr;
+    padding: 1.5% 5%;
+    height: 100%;
+    .main-video {
+        hr {
+            margin: 0;
+            padding: 0;
         }
-      }
-
-      #title {
-        font-size: 18px;
-      }
-      #video-meta-info {
-        font-size: 14px;
-        line-height: 28px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .view-time {
-          font-size: 12px;
-          #view {
-            margin-right: 5px;
-          }
-        }
-        .thumbs {
-          color: gray;
-          width: 30%;
-          align-items: center;
-          font-size: 15px;
-
-          i {
-            cursor: pointer;
-            margin-right: 5px;
-            font-size: 20px;
-          }
-          .fa-thumbs-down {
-            position: relative;
-            top: 3px;
-            margin-left: 30px;
-          }
-        }
-      }
-    }
-  }
-  .video-second-info {
-    padding: 20px 0;
-    .owner-info {
-      display: flex;
-      .owner {
-        display: flex;
-        align-items: center;
-        flex: 1;
-      }
-      #subscription {
-        padding: 0 20px;
-        font-size: smaller;
-        border: none;
-        background-color: $red;
-        color: white;
-        cursor: pointer;
-        height: 40px;
-      }
-      .owner-info-subscription {
-        display: flex;
-        flex-direction: column;
-        margin-left: 10px;
-        #subscription-container {
-          display: flex;
-          margin-top: 3px;
-          font-size: small;
-          #subscribers {
-            margin: 0 2px;
-          }
-        }
-      }
-    }
-    .description {
-      margin: 20px 0 0 50px;
-      font-size: 15px;
-    }
-  }
-  .video-list {
-    display: block;
-    width: 100%;
-    .watch {
-      max-height: 100px;
-      display: grid;
-      grid-template-columns: 45% 55%;
-      grid-template-rows: repeat(auto-fit, 100px);
-      margin-bottom: 8px;
-      .profileImg {
-        display: none;
-      }
-      .watchInfo {
-        width: 100%;
-        .meta {
-          height: 100%;
-          padding: 10px;
-          .meta-watch {
-            a {
-              margin-bottom: 5px;
-            }
-            position: relative;
-            top: 50%;
-            display: flex;
-            flex-direction: column;
-            font-size: 12px;
-          }
-        }
-      }
-      .videoSize {
-        height: 100px;
+        padding: 0 2%;
         video {
-          height: 100px;
-          object-fit: cover;
-          width: 100%;
+            width: 100%;
+            object-fit: cover;
+            max-height: 700px;
         }
-      }
-    }
-  }
-}
+        .video-first-info {
+            padding: 10px 0;
+            #hastags {
+                margin-bottom: 5px;
+                color: #065fd4;
+                font-size: 12px; // ?
+                .hashtag {
+                    margin-right: 5px;
+                }
+            }
 
-.comment-header {
-  padding: 20px 0;
-  .comment-num {
-    padding: 0 0 20px 0;
-  }
-  .comment-box {
-    display: flex;
-    align-items: center;
+            #title {
+                font-size: 18px;
+            }
+            #video-meta-info {
+                font-size: 14px;
+                line-height: 28px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .view-time {
+                    font-size: 12px;
+                    #view {
+                        margin-right: 5px;
+                    }
+                }
+                .thumbs {
+                    color: gray;
+                    width: 30%;
+                    align-items: center;
+                    font-size: 15px;
 
-    .comment-input {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      input {
-        width: 95%;
-        text-align: start;
-        background-color: rgb(248, 248, 248);
-        border-width: 0 0 1px 0;
-        border-color: #ccc;
-      }
+                    i {
+                        cursor: pointer;
+                        margin-right: 5px;
+                        font-size: 20px;
+                    }
+                    .fa-thumbs-down {
+                        position: relative;
+                        top: 3px;
+                        margin-left: 30px;
+                    }
+                }
+            }
+        }
     }
-  }
+    .video-second-info {
+        padding: 20px 0;
+        .owner-info {
+            display: flex;
+            .owner {
+                display: flex;
+                align-items: center;
+                flex: 1;
+            }
+            #subscription {
+                padding: 0 20px;
+                font-size: smaller;
+                border: none;
+                background-color: $red;
+                color: white;
+                cursor: pointer;
+                height: 40px;
+            }
+            .owner-info-subscription {
+                display: flex;
+                flex-direction: column;
+                margin-left: 10px;
+                #subscription-container {
+                    display: flex;
+                    margin-top: 3px;
+                    font-size: small;
+                    #subscribers {
+                        margin: 0 2px;
+                    }
+                }
+            }
+        }
+        .description {
+            margin: 20px 0 0 50px;
+            font-size: 15px;
+        }
+    }
+    .video-list {
+        display: block;
+        width: 100%;
+        .watch {
+            max-height: 100px;
+            display: grid;
+            grid-template-columns: 45% 55%;
+            grid-template-rows: repeat(auto-fit, 100px);
+            margin-bottom: 8px;
+            .profileImg {
+                display: none;
+            }
+            .watchInfo {
+                width: 100%;
+                .meta {
+                    height: 100%;
+                    padding: 10px;
+                    .meta-watch {
+                        a {
+                            margin-bottom: 5px;
+                        }
+                        position: relative;
+                        top: 50%;
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .videoSize {
+                height: 100px;
+                video {
+                    height: 100px;
+                    object-fit: cover;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }

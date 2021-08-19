@@ -1,0 +1,10 @@
+mixin comment(comments)
+
+    #comment-user 
+        img(src="/"+comments.owner.avatarUrl , width="200px" , height="200px").profileImg
+        #user
+            #user-info 
+                span #{comments.owner.name} #{comments.createdAt.toString().substring(0,25)}
+            #user-comment
+                span=comments.text
+            

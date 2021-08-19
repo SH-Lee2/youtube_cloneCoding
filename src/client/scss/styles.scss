@@ -11,21 +11,22 @@
 @import "./components/form.scss";
 @import "./components/socialLogin.scss";
 @import "./components/profileImage.scss";
-
+@import "./components/comment.scss";
 //screens
 @import "./screens/home.scss";
 @import "./screens/myprofile.scss";
 @import "./screens/watch.scss";
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 body {
-  margin: 0;
-  height: calc(100vh - 65px);
+    margin: 0;
+    // height: calc(100vh - 65px);
+    height: max-content;
 }
 a {
-  text-decoration: none;
-  &:visited {
-    color: black;
-  }
+    text-decoration: none;
+    &:visited {
+        color: black;
+    }
 }
