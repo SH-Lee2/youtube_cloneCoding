@@ -1,37 +1,40 @@
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 65px;
-  padding: 12px 50px;
-  .home-icon {
-    color: $red;
-    font-size: 20px;
-    font-weight: 500;
-    &::after {
-      content: "YouTube";
-      color: black;
-    }
-  }
-  form {
-    width: 30%;
-
-    input {
-      width: 90%;
-      border: 1px solid rgb(182, 182, 182);
-      padding: 3px;
-    }
-    button {
-      width: 10%;
-      border: 1px solid rgb(182, 182, 182);
-      border-left: none;
-      padding: 3px;
-      cursor: pointer;
-    }
-  }
-  nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+    height: 65px;
+    padding: 12px 50px;
+    // position: -webkit-sticky;
+    // position: sticky;
+    // top: 0;
+    .home-icon {
+        color: $red;
+        font-size: 20px;
+        font-weight: 500;
+        &::after {
+            content: "YouTube";
+            color: black;
+        }
+    }
+    form {
+        width: 30%;
+
+        input {
+            width: 90%;
+            border: 1px solid rgb(182, 182, 182);
+            padding: 3px;
+        }
+        button {
+            width: 10%;
+            border: 1px solid rgb(182, 182, 182);
+            border-left: none;
+            padding: 3px;
+            cursor: pointer;
+        }
+    }
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

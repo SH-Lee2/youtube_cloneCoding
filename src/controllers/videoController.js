@@ -42,7 +42,7 @@ export const watch = async(req,res)=>{
     const index = videos.findIndex(i=>String(i._id) === id)
     videos.splice(index,1)
     const hashtags = video.hashtags 
-    console.log(video.comments)
+    console.log(video.comments[0])
     return res.render("video/watch",{video,hashtags,videos})
 }
 
@@ -157,7 +157,7 @@ export const subscription = async(req,res)=>{
     return res.sendStatus(200)
 }
 
-export const comments = async(req,res)=>{
+export const Comments = async(req,res)=>{
     const {
         params : {id},
         session: { user },
@@ -170,10 +170,40 @@ export const comments = async(req,res)=>{
     const comment = await Comment.create({
         text ,
         owner : user._id,
-        video : id,
-        avatarUrl : user.avatarUrl
+        video : id
     })
     video.comments.push(comment._id)
     video.save()
     return res.sendStatus(200)
+}
+
+export const getUserInfo = async(req,res)=>{
+    const {
+        params : {id},
+        session: { user },
+        body : {text}
+    }=req
+    const video = await Video.findById(id).populate({path:'comments',populate : {path : 'owner',select: 'id name avatarUrl'}})  // 그냥보내면 패스워드가 다보임
+    const cmLength = video.comments.length-1
+    const comment = video.comments[cmLength]
+    console.log(comment)
+    return res.send({comment})
+}
+
+export const deleteComment = async(req,res)=>{
+    const {
+        params : {id},
+        session: { user },
+        body : {commentId}
+    }=req
+    const comment = await Comment.findById(commentId)
+    const video = await Video.findById(id)
+    if(!comment) return res.sendStatus(404)
+    if(!video) return res.sendStatus(404)
+    video.comments.pull(commentId)
+    await Comment.findByIdAndDelete(commentId)
+    video.save()
+    comment.save()
+    return res.sendStatus(200)
+
 }

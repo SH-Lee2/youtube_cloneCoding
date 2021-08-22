@@ -22,7 +22,8 @@
 body {
     margin: 0;
     // height: calc(100vh - 65px);
-    height: max-content;
+    height: auto;
+    min-height: max-content;
 }
 a {
     text-decoration: none;

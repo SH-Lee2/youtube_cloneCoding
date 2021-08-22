@@ -38,26 +38,28 @@ block content
                     .description
                         span#video-description=video.description
                 hr
-                .comment
+                .comment#comment
                     .comment-header 
                         .comment-num
-                            span#comment-text 댓글 #{video.comments.length}개 
+                            span 댓글 #{video.comments.length}개 
                         .comment-box
                             if loggedIn
-                                img(src="/"+user.avatarUrl , width="200px" , height="200px").profileImg
+                                #profileImg
+                                    img(src="/"+user.avatarUrl , width="200px" , height="200px").profileImg
                                 .comment-form
                                     #comment-form 
-                                        //- input(type="text", name="",class="comment-input",placeholder="공개 댓글 추가....")
-                                        textarea(maxlength="1000",class="comment-input",placeholder="공개 댓글 추가....",overflow="auto") 
-                                        #text-submit
+                                        textarea(maxlength="1000",rows="1",class="comment-input",placeholder="공개 댓글 추가....",overflow="auto")
+                                        #text-button
+                                            button#cancle 취소
                                             button#submit 댓글
                             else
                                 a#comment-login(href="/login") Login
-
                     if video.comments
-                        each comments in video.comments
+                        each comments in video.comments.reverse()
                             +comment(comments)
-                            
+                    
+
+
                 if String(video.owner._id) === String(user._id)
                     hr
                     a(href=`${video.id}/edit-video`) Edit Video &rarr; 
