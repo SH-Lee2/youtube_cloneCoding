@@ -34,7 +34,10 @@ block content
                                     span 구독자               
                                     span#subscribers=video.owner.meta.subscribers 
                                     span 명
-                        button#subscription 구독     
+                        if  check
+                            button#subscription 구독중
+                        else 
+                            button#subscription 구독
                     .description
                         span#video-description=video.description
                 hr

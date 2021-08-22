@@ -33,17 +33,17 @@ export const postUpload = async(req,res) =>{
 }
 
 export const watch = async(req,res)=>{
-    const {params : {
-        id
-    }}=req
+    const {
+        params : {id},
+        session : {user : {_id}}
+    }=req
     const video = await Video.findById(id).populate('owner').populate({path:'comments', populate : {path : 'owner'}})
     const videos = await Video.find({}).populate('owner')
-    
+    const check = await User.exists({_id , subscribeVideo : video._id})
     const index = videos.findIndex(i=>String(i._id) === id)
     videos.splice(index,1)
     const hashtags = video.hashtags 
-    console.log(video.comments[0])
-    return res.render("video/watch",{video,hashtags,videos})
+    return res.render("video/watch",{video,hashtags,videos,check})
 }
 
 export const deleteVideo = async(req,res)=>{
@@ -140,19 +140,30 @@ export const view = async(req,res)=>{
 }
 
 export const subscription = async(req,res)=>{
-    const {params : {id},
-        body : {status}
+    const {
+        params : {id},
+        session : {user : {_id}}
     }=req
-    const video = await Video.findById(id)
-    const user = await User.findById(video.owner)
+    const video = await Video.findById(id).populate('owner')
+    const owner = await User.findById(video.owner._id)
+    const user = await User.findById(_id)
+    const check = await User.exists({_id , subscribeVideo : video._id})
     if(!video){
         return res.sendStatus(404);
     }
     if(!user){
         return res.sendStatus(404);
     }
-    console.log(status)
-    status ? user.meta.subscribers+=1 : user.meta.subscribers-= 1
+    if(check)  {
+        owner.meta.subscribers -= 1
+        user.subscribeVideo.pull(video._id)
+    }
+    else {
+        owner.meta.subscribers +=1
+        user.subscribeVideo.push(video._id)
+    }
+    console.log(owner,user)
+    owner.save()
     user.save()
     return res.sendStatus(200)
 }

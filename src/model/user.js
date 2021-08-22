@@ -10,6 +10,9 @@ const userSchema = new Schema({
     video : [{
         type:Schema.Types.ObjectId, ref : 'Video'
     }],
+    subscribeVideo : [{
+        type : String
+    }],
     meta : {
         subscribers : {type :Number, default : 0}
     },

@@ -592,6 +592,9 @@ footer {
   margin-top: 3px;
   font-size: small;
 }
+.content .video-second-info .owner-info .owner-info-subscription #subscription-container span {
+  font-size: 11px;
+}
 .content .video-second-info .owner-info .owner-info-subscription #subscription-container #subscribers {
   margin: 0 2px;
 }
