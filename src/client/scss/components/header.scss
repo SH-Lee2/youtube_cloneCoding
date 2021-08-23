@@ -36,5 +36,30 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        #nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 200px;
+            .user-menu {
+                font-weight: 600;
+                a {
+                    color: $red;
+                }
+            }
+        }
+        #nav-menu2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100px;
+            .user-menu {
+                font-weight: 600;
+                a {
+                    color: $red;
+                }
+            }
+        } // 이렇게 하는게 맞나?
     }
 }

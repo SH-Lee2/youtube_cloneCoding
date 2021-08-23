@@ -172,6 +172,30 @@ header nav {
   justify-content: space-between;
   align-items: center;
 }
+header nav #nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 200px;
+}
+header nav #nav-menu .user-menu {
+  font-weight: 600;
+}
+header nav #nav-menu .user-menu a {
+  color: #ff0000;
+}
+header nav #nav-menu2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+}
+header nav #nav-menu2 .user-menu {
+  font-weight: 600;
+}
+header nav #nav-menu2 .user-menu a {
+  color: #ff0000;
+}
 
 .menu {
   display: flex;
@@ -201,6 +225,8 @@ header nav {
 }
 .menu .bot {
   flex: 2;
+  padding: 20px;
+  font-weight: 700;
 }
 
 .bc {
@@ -467,20 +493,23 @@ footer {
   align-items: center;
   height: 100%;
 }
-.profile-container .profile-header .profileImg {
-  width: 100px;
-  height: 100px;
+.profile-container .profile-header #myProfileImg {
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
   margin-right: 20px;
 }
 .profile-container .profile-header .profile-meta {
   font-size: 20px;
 }
+.profile-container .profile-header .profile-meta span {
+  font-size: 15px;
+}
 .profile-container .profile-header .profile-meta .name {
   margin-bottom: 10px;
 }
 .profile-container .profile-menu {
-  padding: 10px 3% 0 3%;
+  padding: 20px 3% 0 3%;
   display: grid;
   max-width: 800px;
   min-width: 470px;
@@ -496,7 +525,7 @@ footer {
   align-items: center;
   justify-content: center;
 }
-.profile-container .profile-menu .select {
+.profile-container .profile-menu #select {
   border-bottom: 3px solid gray;
 }
 

@@ -1,4 +1,5 @@
 import User from "../model/user"
+import Video from "../model/video"
 import bcrypt from "bcrypt"
 import fetch from "node-fetch"
 import "dotenv/config"
@@ -160,8 +161,7 @@ export const postChangePassword = async (req,res) => {
 
 export const myProfile = async(req, res) =>{
     const {params : {id}}=req
-    const users = await User.findById(id)
-    console.log(users.meta.subscribers)
+    const users = await User.findById(id).populate({path :"video",populate : {path : 'owner'}})
     return res.render("user/myProfile",{users})
 }
 

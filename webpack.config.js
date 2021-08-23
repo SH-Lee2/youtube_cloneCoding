@@ -10,7 +10,8 @@ module.exports = {
       thumbs: BASE_JS + "thumbs.js",
       video : BASE_JS + "video.js",
       subscription : BASE_JS + "subscription.js",
-      comments: BASE_JS + "comments.js"
+      comments: BASE_JS + "comments.js",
+      myProfile : BASE_JS + "myProfile.js"
     },
     
     plugins: [

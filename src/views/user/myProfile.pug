@@ -1,19 +1,19 @@
 extends ../base
-
+include ../mixins/video
 block content 
     .container
         include ../parts/side.pug
         .profile-container
             .profile-header 
-                img(src="/"+users.avatarUrl , width="200px" , height="200px").profileImg
+                img(src="/"+users.avatarUrl).profileImg#myProfileImg
                 .profile-meta
                     p.name=users.name
                     if Number(users.meta.subscribers) !== 0
-                        p.subscribers #{users.meta.subscribers} 명
+                        span.subscribers #{users.meta.subscribers} 명
                     else 
-                        p.subscribers 구독자 없음
+                        span.subscribers 구독자 없음
             ul.profile-menu 
-                li.select 
+                li#select 
                     span 홈
                 li 
                     span 동영상
@@ -26,5 +26,8 @@ block content
                 li 
                     i.fas.fa-search
             .video-grid
-            
+                each video in users.video
+                            +video(video)
+block script 
+    script(src="/static/js/myProfile.js") 
         //가지고있는 비디오 
