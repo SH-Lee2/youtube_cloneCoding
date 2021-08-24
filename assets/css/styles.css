@@ -287,7 +287,6 @@ header nav #nav-menu2 .user-menu a {
   color: gray;
 }
 .video-grid .video .videoInfo .meta .meta-video a {
-  text-decoration: none;
   margin-bottom: 5px;
 }
 .video-grid .video .videoSize {
@@ -322,6 +321,9 @@ footer {
   align-items: center;
   justify-content: center;
   height: 90vh;
+}
+.form a {
+  color: blue;
 }
 .form form {
   display: flex;
@@ -499,6 +501,15 @@ footer {
   border-radius: 50%;
   margin-right: 20px;
 }
+.profile-container .profile-header a {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 20px;
+  cursor: pointer;
+  color: gray;
+}
 .profile-container .profile-header .profile-meta {
   font-size: 20px;
 }
@@ -671,6 +682,10 @@ footer {
   width: 100%;
 }
 
+#comment-login {
+  color: blue;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -683,7 +698,32 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
 }
 a:visited {
   color: black;
+}
+
+@keyframes goAway {
+  from {
+    transform: none;
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+.messages {
+  position: fixed;
+  top: 90vh;
+  left: 40px;
+  padding: 20px 40px;
+  color: white;
+  background-color: #ff0000;
+  border-radius: 500px;
+  animation: goAway 1.5s ease-in-out forwards;
+  animation-delay: 2s;
+  font-size: 13px;
+  opacity: 0.9;
 }

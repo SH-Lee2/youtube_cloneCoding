@@ -27,7 +27,33 @@ body {
 }
 a {
     text-decoration: none;
+    color: black;
     &:visited {
         color: black;
     }
+}
+
+@keyframes goAway {
+    from {
+        transform: none;
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+}
+
+.messages {
+    position: fixed;
+    top: 90vh;
+    left: 40px;
+    padding: 20px 40px;
+    color: white;
+    background-color: $red;
+    border-radius: 500px;
+    animation: goAway 1.5s ease-in-out forwards;
+    animation-delay: 2s;
+    font-size: 13px;
+    opacity: 0.9;
 }

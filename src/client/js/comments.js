@@ -6,10 +6,13 @@ const submit = document.getElementById("submit"),
     cancle = document.getElementById("cancle"),
     textarea = document.querySelector(".comment-input"),
     profileImg = document.getElementById("profileImg"),
-    
+    content = document.querySelector(".content"),
     commentHeader = document.querySelector(".comment-header")
     
 const {dataset : {id}} = videoContainer
+
+const span = document.createElement("span")
+span.classList.add("messages")
 
 const createComment = async()=>{
     
@@ -37,6 +40,9 @@ const createComment = async()=>{
         <i class="far fa-trash-alt delete"></i>
     </div>`
     commentHeader.after(div)
+    
+    span.innerText="댓글 작성되었습니다."
+    content.after(span)
     handleMouse()
 }
 
@@ -89,7 +95,6 @@ textarea.addEventListener("input",function(textarea){
 })
 
 function handleDelete(){
-    console.log(this)
     const parentNode = this.parentNode.parentNode
     const commentContainer = document.getElementById("comment")
     commentContainer.removeChild(parentNode)
@@ -101,6 +106,8 @@ function handleDelete(){
             },
             body: JSON.stringify({ commentId })
     })
+    span.innerText="댓글 삭제하였습니다."
+    content.after(span)
 }
 
 

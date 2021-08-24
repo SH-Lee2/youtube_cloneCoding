@@ -3,6 +3,7 @@ import Video from "../model/video"
 import bcrypt from "bcrypt"
 import fetch from "node-fetch"
 import "dotenv/config"
+import flash from "express-flash"
 export const getJoin =(req,res)=>{
     res.render("user/join")
 }
@@ -11,10 +12,16 @@ export const postJoin= async (req,res)=>{
     const {
         name,id,password,password2,location,email
     }=req.body
-    const user = await User.exists({$or:[{id},{email}]}) 
-    if(user){
+    //const user = await User.exists({$or:[{id},{email}]}) 
+    const userIdCheck = await User.exists({id})
+    const emailCheck = await User.exists({email}) 
+    if(userIdCheck ){
         //flash 메세지 
-        console.log("exites User")
+        req.flash('error',"아이디 중복 , 다른 아이디를 사용해주세요")
+        return res.render("user/join")
+    }
+    if(emailCheck){
+        req.flash('error',"이메일 중복 , 다른 이메일을 사용해주세요")
         return res.render("user/join")
     }
     if(password !== password2){
@@ -30,7 +37,7 @@ export const postJoin= async (req,res)=>{
         email
     })
 
-
+    req.flash("join","회원가입 성공!")
     return res.redirect('/login')
 } 
 
@@ -43,19 +50,18 @@ export const postLogin = async(req,res)=>{
     //users db에서 유저가 있는지 확인 없으면 리턴 
     const user = await User.findOne({id})
     if(!user){
-        //flash
-        console.log("can not find User")
+        req.flash('error','아이디를 찾을수 없습니다.')
         return res.render("user/login")
     }
     const match = await bcrypt.compare(password,user.password)
     if(!match){
-        //flash
-        console.log("to have a wrong password")
+        req.flash('error',"비밀번호가 일치하지 않습니다.")
         return res.render("user/login")
     }
     //유저가 있으면 세션에 저장 
     req.session.loggedIn = true
     req.session.user = user
+    req.flash("login","로그인 하였습니다.")
     return res.redirect('/')
 }
 
@@ -123,6 +129,7 @@ export const finishGitHub = async(req,res)=>{
         }
         req.session.user = user;
         req.session.loggedIn = true
+        req.flash("login","로그인 하였습니다.")
         return res.redirect("/");
         }else{
             return res.redirect("/login")
@@ -134,6 +141,7 @@ export const finishGitHub = async(req,res)=>{
 export const logOut = (req,res)=>{
     req.session.loggedIn = false
     req.session.user = {}
+    req.flash("logout","로그아웃 하였습니다.")
     return res.redirect("/")
 }
 
@@ -183,6 +191,6 @@ export const postEditProfile = async(req,res)=>{
         avatarUrl : file ? file.path : avatarUrl
     },{new : true})
     req.session.user = userUpdate
-    
+    req.flash('messages',"프로필 변경 되었습니다.")
     return res.redirect(`/user/${_id}/editProfile`)
 }

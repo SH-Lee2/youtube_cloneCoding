@@ -4,6 +4,7 @@ import rootRouter from "./routers/rootRouter"
 import userRouter from "./routers/userRouter"
 import videoRouter from "./routers/videoRouter"
 import session from "express-session"
+import flash from "express-flash"
 import { watchSession } from "./middleWare"
 import "./db"
 import "./model/user"
@@ -36,6 +37,7 @@ const handleListen=()=>{
     console.log(`listening at http://localhost:${PORT}`)
 }
 app.use(watchSession)
+app.use(flash())
 app.use('/uploads',express.static('uploads'))  // 브라우저가 볼수있게      
 app.use('/static',express.static('assets'))
 app.use('/',rootRouter)

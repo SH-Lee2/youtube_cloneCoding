@@ -12,6 +12,9 @@ block content
                         span.subscribers #{users.meta.subscribers} 명
                     else 
                         span.subscribers 구독자 없음
+                if String(user._id) === String(users._id)
+                    a(href=`/user/${user._id}/editProfile`)
+                        i.fas.fa-user-edit
             ul.profile-menu 
                 li#select 
                     span 홈

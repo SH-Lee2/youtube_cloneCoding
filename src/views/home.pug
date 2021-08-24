@@ -2,6 +2,10 @@ extends base
 include mixins/video
 
 block content
+    if messages.logout 
+        span.messages=messages.logout
+    if messages.login 
+        span.messages=messages.login
     .container
         include parts/side.pug
         .bc

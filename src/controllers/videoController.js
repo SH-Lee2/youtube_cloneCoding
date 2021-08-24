@@ -105,6 +105,8 @@ export const getSearch = async(req,res) => {
     else{
         return res.render("home")
     }
+    if(!videos.length) req.flash('error','검색 결과 없음.')
+    else req.flash('messages',`검색어 : ${search}`)
     return res.render("result", { videos });
 }
 
@@ -116,13 +118,14 @@ export const thumbs= async(req,res)=>{
     if(!video){
         return res.sendStatus(404);
     }
-    if(flag === "up"){
-        up === 1 ? video.meta.like += 1 : video.meta.like -= 1
-        if(down)video.meta.unLike -= 1
-    }else{
-        down === 1 ? video.meta.unLike += 1 : video.meta.unLike -= 1
-        if(up) video.meta.like -= 1
-    }
+    if(String(req.session.user._id) !== String(video.owner._id))
+        if(flag === "up"){
+            up === 1 ? video.meta.like += 1 : video.meta.like -= 1
+            if(down)video.meta.unLike -= 1
+        }else{
+            down === 1 ? video.meta.unLike += 1 : video.meta.unLike -= 1
+            if(up) video.meta.like -= 1
+        }
     video.save()
     return res.sendStatus(200)
 }

@@ -1,21 +1,26 @@
 
 const subscriptionBtn = document.getElementById("subscription"),
     subscribers = document.getElementById("subscribers"),
-    videoContainer = document.querySelector(".main-video")
+    videoContainer = document.querySelector(".main-video"),
+    content = document.querySelector(".content")
+    span = document.createElement("span")
+span.classList.add("messages")
+
 const {dataset : {id}} = videoContainer
 
 subscriptionBtn.addEventListener("click",()=>{
     let {innerText} = subscriptionBtn
     if(innerText === "구독중"){
-        console.log(innerText)
+        span.innerText="구독 취소 하였습니다."
         subscribers.innerText = Number(subscribers.innerText) - 1
         subscriptionBtn.innerText = "구독"
     }else if(innerText === "구독"){
-        console.log(innerText)
+        span.innerText="구독 하였습니다."
         subscribers.innerText = Number(subscribers.innerText) + 1
         subscriptionBtn.innerText = "구독중"
     }
     fetch(`/api/videos/${id}/subscription`,{
         method : "POST"
     })
+    content.after(span)
 })
