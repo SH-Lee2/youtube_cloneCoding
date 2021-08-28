@@ -8,11 +8,6 @@ const commentSchema = new Schema({
     owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
     video: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Video" },
     createdAt: { type: Date, required: true, default: Date.now },
-    meta : {
-        like : {type : Number , default : 0},
-        unLike : {type : Number , default : 0},
-
-    }
 })
 
 const Comment = mongoose.model("Comment", commentSchema)

@@ -1,5 +1,4 @@
 mixin comment(comments)
-
     .comment-user(data-comment-id =comments.id) 
         a(href=`/user/${comments.owner._id}`)
             img(src="/"+comments.owner.avatarUrl).profileImg

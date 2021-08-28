@@ -25,9 +25,14 @@ const userSchema = new Schema({
 
 userSchema.pre("save",async function(next){
     if(!this.socialLogin){
-        const hash = await bcrypt.hash(this.password,5)
-        this.password = hash
+        //user를 저장할때 마다 비밀번호가 바뀌는걸 방지
+        if(this.isModified("password")){
+            this.password = await bcrypt.hash(this.password,5)
+        }
     }
+    
+
+    
     return next()
 })
 

@@ -6,6 +6,8 @@ block content
         span.messages=messages.logout
     if messages.login 
         span.messages=messages.login
+    if messages.error 
+        span.messages=messages.error
     .container
         include parts/side.pug
         .bc

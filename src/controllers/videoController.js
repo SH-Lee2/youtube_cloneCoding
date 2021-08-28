@@ -2,9 +2,10 @@ import Video from "../model/video"
 import User from "../model/user"
 import Comment from "../model/comment"
 export const  home = async(req,res)=>{
+    const  {session : {user : {_id}}}=req
     const videos = await Video.find({}).populate('owner')
-    console.log(videos)
-    res.render("home",{videos})
+    const users = await User.findById(_id).populate({path:'subscribeVideo', populate : {path : 'owner'}})
+    res.render("home",{videos,users})
 }
 
 export const getUpload = (req,res) =>{
@@ -40,6 +41,7 @@ export const watch = async(req,res)=>{
     const video = await Video.findById(id).populate('owner').populate({path:'comments', populate : {path : 'owner'}})
     const videos = await Video.find({}).populate('owner')
     const check = await User.exists({_id , subscribeVideo : video._id})
+
     const index = videos.findIndex(i=>String(i._id) === id)
     videos.splice(index,1)
     const hashtags = video.hashtags 
@@ -165,7 +167,6 @@ export const subscription = async(req,res)=>{
         owner.meta.subscribers +=1
         user.subscribeVideo.push(video._id)
     }
-    console.log(owner,user)
     owner.save()
     user.save()
     return res.sendStatus(200)
@@ -194,13 +195,10 @@ export const Comments = async(req,res)=>{
 export const getUserInfo = async(req,res)=>{
     const {
         params : {id},
-        session: { user },
-        body : {text}
     }=req
     const video = await Video.findById(id).populate({path:'comments',populate : {path : 'owner',select: 'id name avatarUrl'}})  // 그냥보내면 패스워드가 다보임
     const cmLength = video.comments.length-1
     const comment = video.comments[cmLength]
-    console.log(comment)
     return res.send({comment})
 }
 
@@ -215,9 +213,10 @@ export const deleteComment = async(req,res)=>{
     if(!comment) return res.sendStatus(404)
     if(!video) return res.sendStatus(404)
     video.comments.pull(commentId)
-    await Comment.findByIdAndDelete(commentId)
+    console.log(comment)
+    console.log(video.comments)
+    await Comment.findByIdAndDelete({_id:commentId})
     video.save()
-    comment.save()
     return res.sendStatus(200)
-
+    
 }
