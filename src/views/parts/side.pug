@@ -34,6 +34,9 @@
                     span 좋아요 표시한 동영상
     .bot
         h2 구독
-        //- if user.subscribeVideo 
-        //-     each ownerInfo in user.subscribeVideo
-        //-         span=ownerInfo.name
+        ul
+            if subscribers
+                each subscriber in subscribers
+                    a(href=`/user/${subscriber.owner._id}`) 
+                        img.profileImg(src="/"+subscriber.owner.avatarUrl)
+                        span#name=subscriber.owner.name

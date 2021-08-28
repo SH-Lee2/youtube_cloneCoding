@@ -1,8 +1,6 @@
 extends ../base
 
 block content
-    if messages.error 
-        span.messages=messages.error
     .form
         form(method="post")
             input(type="text", placeholder="Name", name="name" required)

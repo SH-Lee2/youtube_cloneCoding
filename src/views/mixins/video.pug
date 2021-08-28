@@ -2,7 +2,7 @@ mixin video(video)
 
     .video.watch
         a(href=`/video/${video._id}`).videoSize
-            video(src="/"+video.video) 
+            video(src="/"+video.video)
         .videoInfo.watchInfo
             
             a(href=`/user/${video.owner._id}`)

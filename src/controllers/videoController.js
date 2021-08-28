@@ -5,7 +5,9 @@ export const  home = async(req,res)=>{
     const  {session : {user : {_id}}}=req
     const videos = await Video.find({}).populate('owner')
     const users = await User.findById(_id).populate({path:'subscribeVideo', populate : {path : 'owner'}})
-    res.render("home",{videos,users})
+    let subscribers =[];
+    if(users &&users.subscribeVideo.length) subscribers = users.subscribeVideo
+    res.render("home",{videos,subscribers})
 }
 
 export const getUpload = (req,res) =>{
@@ -30,6 +32,7 @@ export const postUpload = async(req,res) =>{
     const user = await User.findById(_id)
     user.video.push(video._id)
     user.save()
+    req.flash("messages","비디오 업로드 완료")
     return res.redirect("/")
 }
 
@@ -63,6 +66,7 @@ export const deleteVideo = async(req,res)=>{
     const user = await User.findById(video.owner._id)
     user.video.pull(id)
     user.save()
+    req.flash('messages','비디오 삭제 완료')
     return res.redirect("/")
 }
 
@@ -80,7 +84,6 @@ export const postEditVideo = async(req,res) =>{
     } = req
     const video = await Video.findById(id).populate("owner")
     if(String(video.owner._id) !== String(_id)){
-        //flash
         return res.redirect(`/video/${id}/edit-video`)
     }
     await Video.findByIdAndUpdate(id,{
@@ -89,6 +92,7 @@ export const postEditVideo = async(req,res) =>{
         hashtags : Video.formatHashTags(hashtags)
     })
     video.save()
+    req.flash("messages",'비디오 수정 완료')
     return res.redirect("/")
 }
 

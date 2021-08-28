@@ -1,10 +1,6 @@
 extends ../base
 
 block content
-    if messages.join 
-        span.messages=messages.join
-    if messages.error 
-        span.messages=messages.error
     .form 
         form(method="post")
             input(type="text", placeholder="Id", name="id")

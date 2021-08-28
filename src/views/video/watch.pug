@@ -3,12 +3,10 @@ include ../mixins/video
 include ../mixins/comment
 
 block content
-    if messages.error 
-        span.messages=messages.error
-    .bc.ac
+    .bg
         .content
             .main-video(data-id=video.id , data-login=`${loggedIn}`)
-                video#video(src="/"+video.video, controls)
+                video#video(src="/"+video.video,  controls)
                 .video-first-info
                     #hastags
                         each hashtag in hashtags

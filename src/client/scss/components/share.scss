@@ -1,7 +1,5 @@
-.bc {
+.video-container {
     width: 100%;
-    height: 100%;
-    background-color: rgb(248, 248, 248);
     .not {
         text-align: center;
         font-weight: 500;
@@ -24,6 +22,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 100%;
         .videoInfo {
             display: flex;
             width: 100%;
@@ -58,12 +57,15 @@
 
         .videoSize {
             width: 100%;
+            height: 15rem;
             &:visited {
                 color: black;
                 text-decoration: none;
             }
             video {
                 width: 100%;
+                object-fit: cover;
+                height: 100%;
             }
         }
     }

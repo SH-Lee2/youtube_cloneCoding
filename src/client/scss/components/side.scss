@@ -1,17 +1,17 @@
 .menu {
+    background-color: white;
     display: flex;
     flex-direction: column;
+    min-height: calc(100vh - 65px);
     // justify-content: space-between;
     min-width: 210px;
     ul {
-        // display: flex;
-        // flex-direction: column;
         // justify-content: space-between;
         // height: 100%;
-        display: grid;
         align-items: center;
         li {
-            display: block;
+            display: flex;
+            align-items: center;
             padding: 20px;
             font-size: 15px;
             cursor: pointer;
@@ -30,7 +30,21 @@
     }
     .bot {
         flex: 2;
-        padding: 20px;
-        font-weight: 700;
+        h2 {
+            font-weight: 700;
+            padding: 20px;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            &:hover {
+                background-color: rgb(228, 227, 227);
+            }
+            #name {
+                font-size: 20px;
+                margin-left: 10px;
+            }
+        }
     }
 }

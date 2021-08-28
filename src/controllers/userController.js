@@ -16,7 +16,6 @@ export const postJoin= async (req,res)=>{
     const userIdCheck = await User.exists({id})
     const emailCheck = await User.exists({email}) 
     if(userIdCheck ){
-        //flash 메세지 
         req.flash('error',"아이디 중복 , 다른 아이디를 사용해주세요")
         return res.render("user/join")
     }
@@ -25,8 +24,7 @@ export const postJoin= async (req,res)=>{
         return res.render("user/join")
     }
     if(password !== password2){
-        // 나중에 express-flash 사용해서 에러 전달 
-        console.log("error")
+        req.flash('error','비밀번호가 일치하지 않습니다')
         return res.render("user/join")
     }
     await User.create({
@@ -157,20 +155,28 @@ export const postChangePassword = async (req,res) => {
     }=req
     const user = await User.findById(_id)
     const match = await bcrypt.compare(old,password)
+    if(new1 !== new2){
+        req.flash('error','변경한 비밀번호가 일치하지 않습니다.')
+        return res.render("user/changePassword")
+    } 
     if(!match){
-        //flash
-        console.log("not match")
+        req.flash('error','현재 비밀번호가 일치하지 않습니다.')
         return res.render("user/changePassword")
     }
     user.password = new1
     user.save()
+    req.flash('messages','비밀번호 변경 완료.')
     return res.redirect("/")
 }
 
 export const myProfile = async(req, res) =>{
-    const {params : {id}}=req
+    const {params : {id},
+    session : {user:{_id}} }=req
     const users = await User.findById(id).populate({path :"video",populate : {path : 'owner'}})
-    return res.render("user/myProfile",{users})
+    const users2 = await User.findById(_id).populate({path:'subscribeVideo', populate : {path : 'owner'}})
+    let subscribers =[];
+    if(users2 &&users2.subscribeVideo.length) subscribers = users2.subscribeVideo
+    return res.render("user/myProfile",{users ,subscribers})
 }
 
 export const getEditProfile = (req,res)=>{

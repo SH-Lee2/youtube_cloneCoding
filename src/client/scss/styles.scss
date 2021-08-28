@@ -21,8 +21,8 @@
 }
 body {
     margin: 0;
-    // height: calc(100vh - 65px);
-    height: auto;
+    min-height: 100vh;
+    background-color: $bg;
     min-height: max-content;
 }
 a {

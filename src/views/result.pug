@@ -2,13 +2,9 @@ extends base
 include mixins/video
 
 block content
-    if messages.error 
-        span.messages=messages.error
-    if messages.messages 
-        span.messages=messages.messages
     .container
         include parts/side.pug
-        .bc
+        .video-container
             if Number(videos.length) !== 0
                 .video-grid
                     each video in videos 
