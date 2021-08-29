@@ -4,12 +4,12 @@ import Comment from "../model/comment"
 export const  home = async(req,res)=>{
     const  {session : {user : {_id}}}=req
     const videos = await Video.find({}).populate('owner')
-    let subscribers =[];
-    if(_id){
-        const users = await User.findById(_id).populate({path:'subscribeVideo', populate : {path : 'owner'}})
-        if(users &&users.subscribeVideo.length) subscribers = users.subscribeVideo
-    }
-    res.render("home",{videos,subscribers})
+    // let subscribers =[];
+    // if(_id){
+    //     const users = await User.findById(_id).populate({path:'subscribeVideo', populate : {path : 'owner'}})
+    //     if(users &&users.subscribeVideo.length) subscribers = users.subscribeVideo
+    // }
+    res.render("home",{videos})
 }
 
 export const getUpload = (req,res) =>{
