@@ -3,8 +3,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BASE_JS = "./src/client/js/";
 module.exports = {
     //entry : 내가 바꾸고 싶은 파일
-    mode: 'development',
-    watch: true,
     entry: {
       main: BASE_JS + "main.js",
       thumbs: BASE_JS + "thumbs.js",

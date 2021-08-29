@@ -4,8 +4,12 @@
   "description": "youtube_cloneCoding",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./src/server.js",
-    "build": "webpack"
+    "start" : "node build/server.js" ,
+    "build" : "npm run build:server && npm run build:assets",
+    "build:server": "babel src -d build",
+    "build:assets" :"webpack --mode=production",
+    "starts": "nodemon --exec babel-node ./src/server.js",
+    "builds": "webpack --mode=develoment -w"
   },
   "repository": {
     "type": "git",
@@ -39,7 +43,8 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.7",
     "@babel/preset-env": "^7.14.7",
     "sass": "^1.36.0",
