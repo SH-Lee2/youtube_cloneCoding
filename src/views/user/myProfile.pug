@@ -5,7 +5,7 @@ block content
         include ../parts/side.pug
         .profile-container
             .profile-header 
-                img(src="/"+users.avatarUrl).profileImg#myProfileImg
+                img(src=users.avatarUrl).profileImg#myProfileImg
                 .profile-meta
                     p.name=users.name
                     if Number(users.meta.subscribers) !== 0
