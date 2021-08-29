@@ -16,7 +16,7 @@ import "dotenv/config"
 import apiRouter from "./routers/apiRouter"
 const app = express()
 
-const PORT = 4000
+const PORT = process.env.PORT || 4000
 
 
 app.set('views', process.cwd() +'/src/views')
