@@ -38,5 +38,5 @@
             if subscribers
                 each subscriber in subscribers
                     a(href=`/user/${subscriber.owner._id}`) 
-                        img.profileImg(src="/"+subscriber.owner.avatarUrl)
+                        img.profileImg(src=subscriber.owner.avatarUrl)
                         span#name=subscriber.owner.name

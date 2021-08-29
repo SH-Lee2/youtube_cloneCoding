@@ -27,7 +27,7 @@ block content
                     .owner-info
                         .owner
                             a(href=`/user/${video.owner._id}`)
-                                img(src="/"+video.owner.avatarUrl , width="200px" , height="200px").profileImg
+                                img(src=video.owner.avatarUrl , width="200px" , height="200px").profileImg
                             .owner-info-subscription
                                 a(href=`/user/${user._id}`)=video.owner.name
                                 #subscription-container

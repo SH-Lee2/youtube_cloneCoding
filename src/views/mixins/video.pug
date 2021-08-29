@@ -6,7 +6,7 @@ mixin video(video)
         .videoInfo.watchInfo
             
             a(href=`/user/${video.owner._id}`)
-                img(src="/"+video.owner.avatarUrl , width="200px" , height="200px").profileImg
+                img(src=video.owner.avatarUrl , width="200px" , height="200px").profileImg
             .meta
                 p.title=video.title
                 .meta-video.meta-watch
