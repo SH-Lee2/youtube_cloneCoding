@@ -2,7 +2,7 @@ import Video from "../model/video"
 import User from "../model/user"
 import Comment from "../model/comment"
 export const  home = async(req,res)=>{
-    // const  {session : {user : {_id}}}=req
+    const  {session : {user : {_id}}}=req
     const videos = await Video.find({}).populate('owner')
     // let subscribers =[];
     // if(_id){
